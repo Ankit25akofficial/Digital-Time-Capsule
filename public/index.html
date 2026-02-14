@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Time Capsule</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1> CAPSULE</h1>
+            <p>Lock your memories in time</p>
+        </header>
+
+        <section id="create-view" class="view active">
+            <div class="card">
+                <h2 >CREATE CAPSULE</h2>
+                <form id="create-form">
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Write to your future self..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="unlock-date">Unlock Date & Time</label>
+                        <input type="datetime-local" id="unlock-date" required>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        <span> SEAL CAPSULE</span>
+                    </button>
+                </form>
+            </div>
+            
+            <div id="success-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="icon-circle"></div>
+                    <h2 style="color: var(--light-blue);">Capsule Sealed!</h2>
+                    <p>Your message is locked in time.</p>
+                    <div class="capsule-id-container">
+                        <code id="generated-id"></code>
+                        <button id="copy-btn" class="btn-icon" title="Copy ID">📋</button>
+                    </div>
+                    <p class="warning-text">Save this ID to unlock your capsule!</p>
+                    <button id="close-modal" class="btn-secondary">Got it</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-capsule-view" class="view active">
+            <div class="card">
+                <h2 style="color: var(--light-blue); margin-bottom: 1.5rem;">OPEN CAPSULE</h2>
+                <form id="retrieve-form">
+                    <div class="form-group">
+                        <label for="capsule-id">Capsule ID</label>
+                        <div class="input-row">
+                            <input type="text" id="capsule-id" placeholder="Paste ID here..." required>
+                            <button type="submit" class="btn-primary">OPEN</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div id="capsule-content" class="capsule-display hidden"></div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
